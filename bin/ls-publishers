@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const colors = require('colors/safe');
+const yargs = require('yargs');
+
+const listPublishers = require('../');
+const formatOutput = require('../format');
+
+const FALSE = Object(false);
+const TRUE = Object(true);
+
+function booleanify(x) {
+	return typeof x === 'object' ? Boolean.prototype.valueOf.call(x) : x;
+}
+
+const argv = yargs
+	.option('mode', {
+		choices: ['auto', 'actual', 'virtual', 'ideal'],
+		default: 'auto',
+		describe: `”actual“ reads from \`${colors.gray('node_modules')}\`; ”virtual“ reads from a lockfile; “ideal” reads from \`${colors.gray('package.json')}\``,
+	})
+	.option('production', {
+		default: TRUE,
+		describe: 'whether to include production deps or not',
+		type: 'boolean',
+	})
+	.option('dev', {
+		default: FALSE,
+		describe: 'whether to include dev deps or not',
+		type: 'boolean',
+	})
+	.option('peer', {
+		default: FALSE,
+		describe: 'whether to include peer deps or not',
+		type: 'boolean',
+	})
+	.check(({ dev, production, peer }) => {
+		if (![dev, production, peer].some((x) => x === TRUE || x === true)) {
+			throw 'At least one of `--dev`, `--production`, or `--peer` must be enabled.';
+		}
+		return true;
+	})
+	.option('json', {
+		default: false,
+		describe: 'whether to output as JSON',
+		type: 'boolean',
+	})
+	.option('groupBy', {
+		choices: ['publisher', 'package'],
+		default: 'publisher',
+		type: 'enum',
+	})
+	.strict()
+	.help()
+	.middleware(({ dev, production, peer, ...args }) => ({
+		...args,
+		dev: booleanify(dev),
+		peer: booleanify(peer),
+		production: booleanify(production),
+	}))
+	.parse();
+
+const { dev, mode, peer, production, json, groupBy } = argv;
+
+const logger = json ? () => {} : undefined;
+
+listPublishers(mode, { dev, logger, peer, production }).then(async ({ byPackage, byPublisher }) => {
+	console.log(formatOutput(
+		groupBy === 'package' ? byPackage : byPublisher,
+		groupBy,
+		json,
+	));
+});

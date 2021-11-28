@@ -1,0 +1,51 @@
+{
+	"name": "ls-publishers",
+	"version": "0.0.0",
+	"description": "git@github.com:ljharb/ls-publishers.git",
+	"bin": "./bin/ls-publishers",
+	"main": "index.js",
+	"exports": {
+		".": "./index.js",
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"lint": "eslint --ext=js,mjs bin/** .",
+		"pretest": "npm run lint",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ljharb/ls-publishers.git"
+	},
+	"keywords": [
+		"npm",
+		"publishers",
+		"ls"
+	],
+	"author": "Jordan Harband <ljharb@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ljharb/ls-publishers/issues"
+	},
+	"homepage": "https://github.com/ljharb/ls-publishers#readme",
+	"devDependencies": {
+		"@ljharb/eslint-config": "^20.2.0",
+		"eslint": "^8.7.0"
+	},
+	"dependencies": {
+		"@npmcli/arborist": "^4.2.1",
+		"colors": "=1.4.0",
+		"get-dep-tree": "^1.0.1",
+		"is-map": "^2.0.2",
+		"is-set": "^2.0.2",
+		"lockfile-info": "^1.0.0",
+		"pacote": "^12.0.2",
+		"publishers": "^2.0.0",
+		"semver": "^7.3.5",
+		"table": "^6.8.0",
+		"yargs": "^17.3.1"
+	},
+	"engines": {
+		"node": ">= 17 || ^16 || ^14.15 || ^12.13"
+	}
+}
