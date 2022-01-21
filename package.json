@@ -1,6 +1,6 @@
 {
 	"name": "ls-publishers",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "git@github.com:ljharb/ls-publishers.git",
 	"bin": "./bin/ls-publishers",
 	"main": "index.js",
