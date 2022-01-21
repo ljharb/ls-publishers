@@ -11,7 +11,9 @@
 	"scripts": {
 		"lint": "eslint --ext=js,mjs bin/** .",
 		"pretest": "npm run lint",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"tests-only": "tape 'test/**/*.js'",
+		"test": "npm run tests-only",
+		"posttest": "aud --production"
 	},
 	"repository": {
 		"type": "git",
@@ -30,7 +32,9 @@
 	"homepage": "https://github.com/ljharb/ls-publishers#readme",
 	"devDependencies": {
 		"@ljharb/eslint-config": "^20.2.0",
-		"eslint": "^8.7.0"
+		"aud": "^2.0.0",
+		"eslint": "^8.7.0",
+		"tape": "^5.4.1"
 	},
 	"dependencies": {
 		"@npmcli/arborist": "^4.2.1",
