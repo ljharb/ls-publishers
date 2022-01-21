@@ -9,6 +9,8 @@
 		"./package.json": "./package.json"
 	},
 	"scripts": {
+		"prepublishOnly": "safe-publish-latest",
+		"prepublish": "not-in-publish || npm run prepublishOnly",
 		"lint": "eslint --ext=js,mjs bin/** .",
 		"pretest": "npm run lint",
 		"tests-only": "tape 'test/**/*.js'",
@@ -37,6 +39,8 @@
 		"aud": "^2.0.0",
 		"auto-changelog": "^2.3.0",
 		"eslint": "^8.7.0",
+		"in-publish": "^2.0.1",
+		"safe-publish-latest": "^2.0.0",
 		"tape": "^5.4.1"
 	},
 	"dependencies": {
