@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.1](https://github.com/ljharb/ls-publishers/compare/v1.0.0...v1.0.1) - 2022-10-26
+
+### Commits
+
+- [meta] use `npmignore` to autogenerate an npmignore file [`68af677`](https://github.com/ljharb/ls-publishers/commit/68af67790eff05f98f2b6e9289bfcd39a344b911)
+- [Deps] update `@npmcli/arborist`, `get-dep-tree`, `pacote`, `semver`, `yargs` [`6861442`](https://github.com/ljharb/ls-publishers/commit/68614422993f5a293564a5df8646b56ead3f323b)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `auto-changelog`, `tape` [`e3b0b45`](https://github.com/ljharb/ls-publishers/commit/e3b0b45b26404227ea8de5f85adf2cb2a2bcf66a)
+- [actions] update rebase action [`94d1c7f`](https://github.com/ljharb/ls-publishers/commit/94d1c7f1600ae29de0611ade73e87d9c488f5e47)
+
 ## v1.0.0 - 2022-01-20
 
 ### Commits
